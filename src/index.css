@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@layer base {
+  :root {
+    /* ATM Theme Colors */
+    --background: 300 18% 55%;
+    --foreground: 0 0% 100%;
+
+    --card: 35 25% 88%;
+    --card-foreground: 220 20% 20%;
+
+    --popover: 35 25% 88%;
+    --popover-foreground: 220 20% 20%;
+
+    --primary: 207 71% 41%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 20% 85%;
+    --secondary-foreground: 220 20% 25%;
+
+    --muted: 35 15% 80%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 207 60% 70%;
+    --accent-foreground: 207 80% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 15% 75%;
+    --input: 35 20% 82%;
+    --ring: 207 71% 41%;
+
+    --radius: 0.5rem;
+
+    /* ATM Specific Colors */
+    --atm-screen: 204 50% 65%;
+    --atm-screen-text: 207 80% 15%;
+    --atm-body: 35 25% 88%;
+    --atm-button: 0 0% 70%;
+    --atm-button-shadow: 0 0% 50%;
+    --atm-header: 207 71% 41%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 300 18% 55%;
+    --foreground: 0 0% 100%;
+
+    --card: 35 25% 88%;
+    --card-foreground: 220 20% 20%;
+
+    --popover: 35 25% 88%;
+    --popover-foreground: 220 20% 20%;
+
+    --primary: 207 71% 41%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 20% 85%;
+    --secondary-foreground: 220 20% 25%;
+
+    --muted: 35 15% 80%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 207 60% 70%;
+    --accent-foreground: 207 80% 20%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 15% 75%;
+    --input: 35 20% 82%;
+    --ring: 207 71% 41%;
+
+    --atm-screen: 204 50% 65%;
+    --atm-screen-text: 207 80% 15%;
+    --atm-body: 35 25% 88%;
+    --atm-button: 0 0% 70%;
+    --atm-button-shadow: 0 0% 50%;
+    --atm-header: 207 71% 41%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ATM Header Sign */
+.atm-header {
+  width: 422px;
+  height: 123px;
+  background-color: #1b66a5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atm-header-img {
+  width: 290px;
+  height: 107px;
+}
+
+.atm-graffiti {
+  position: absolute;
+  top: 30px;
+  right: 86px;
+  width: 138px;
+  height: auto;
+  pointer-events: none;
+}
+
+/* ATM Screen Frame */
+.atm-screen-frame {
+  background: hsl(0, 0%, 78%);
+  padding: 6px;
+  width: 260px;
+  justify-content: center;
+}
+
+/* ATM Screen CRT Effect */
+.atm-screen {
+  background: hsl(var(--atm-screen));
+  font-family: 'VT323', monospace;
+  position: relative;
+  overflow: hidden;
+  padding-top: 26px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 4px;
+}
+
+.atm-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+/* ATM Title Style */
+.atm-title {
+  font-family: 'Amiga', monospace;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Side buttons column */
+.side-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 84px;
+}
+
+/* Enter PIN label positioning */
+.enter-pin {
+  position: absolute;
+  bottom: 17px;
+  right: 1px;
+  font-family: Amiga, monospace;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1;
+  color: #fff;
+  image-rendering: pixelated;
+  top: 168px;
+  font-weight: 700;
+}
+
+/* ATM Button 3D Effect */
+.atm-side-button {
+  background: linear-gradient(
+    180deg,
+    hsl(0 0% 75%) 0%,
+    hsl(0 0% 65%) 50%,
+    hsl(0 0% 55%) 100%
+  );
+  box-shadow: 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease;
+}
+
+.atm-side-button:hover {
+  background: linear-gradient(
+    180deg,
+    hsl(0 0% 80%) 0%,
+    hsl(0 0% 70%) 50%,
+    hsl(0 0% 60%) 100%
+  );
+}
+
+.atm-side-button:active {
+  box-shadow: 
+    inset -1px -1px 2px rgba(255, 255, 255, 0.4),
+    inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
+}
+
+/* Keypad Button Style */
+.keypad-button {
+  background: linear-gradient(
+    180deg,
+    hsl(35 20% 90%) 0%,
+    hsl(35 20% 80%) 100%
+  );
+  box-shadow: 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.1),
+    2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+}
+
+.keypad-button:hover {
+  background: linear-gradient(
+    180deg,
+    hsl(35 20% 95%) 0%,
+    hsl(35 20% 85%) 100%
+  );
+}
+
+.keypad-button:active {
+  box-shadow: 
+    inset -1px -1px 2px rgba(255, 255, 255, 0.6),
+    inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+/* Credit Card Logos Container */
+.credit-card-logos-container {
+  position: relative;
+  width: 251px;
+  height: 24px;
+  margin: 10px auto 0;
+  overflow: hidden;
+}
+
+/* Credit Card Logos - individual card rendering */
+.credit-card-logo-single {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 24px !important;
+  object-fit: cover;
+  object-position: top;
+  max-width: none !important;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+/* Global img rule - prevent forced height */
+img {
+  max-width: 227px;
+  height: auto;
+}
